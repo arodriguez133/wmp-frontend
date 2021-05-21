@@ -8,6 +8,9 @@ export const FETCH_PLANTS_START = 'FETCH_PLANTS_START'
 export const FETCH_PLANTS_SUCCESS = 'FETCH_PLANTS_SUCCESS'
 export const FETCH_PLANTS_FAILURE = 'FETCH_PLANTS_FAILURE'
 
+export const DELETE_PLANT = 'DELETE_PLANT'
+
+
 //...add a new plant into our object
 export const addPlant = (nickname, species, water, description) => {
 
@@ -42,3 +45,10 @@ export const fetchPlants = () => (dispatch) => {
     })
 }
 
+export const deletePlant = (plantId) => (dispatch) => {
+    axios.delete(`https://water-my-plants-build.herokuapp.com/plants/${plantId}`)
+        .then( res => {
+            dispatch({type: DELETE_PLANT})
+        })
+        .catch(err => console.log(err))
+}
