@@ -12,14 +12,15 @@ const initialCredentialValue = {
     message: 'Username or Password not valid.',
   }
 
-function Login (props) {
+function Login () {
     
     const history = useHistory();
     const [credentials, setCredentials] = useState(initialCredentialValue);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
 
-    const handleChanges = e => {
+    const handleChange = e => {
         const userCredentials = {...credentials, [e.target.name] : e.target.value}
+        setCredentials(userCredentials);
     }
 
     const handleSubmit = e => {
