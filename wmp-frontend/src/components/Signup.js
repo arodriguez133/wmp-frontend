@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function Signup (props) {
+    const { push } = useHistory()
     const [ newUser, setNewUser] = useState({
         name: "",
         phoneNumber: "",
@@ -15,9 +17,11 @@ function Signup (props) {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.post("https://water-my-plants-build.herokuapp.com/users/register", newUser)
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
+        // axios.post("https://water-my-plants-build.herokuapp.com/users/register", newUser)
+        //     .then(res => console.log(res))
+        //     .catch(err => console.log(err))
+        push("/home")
+
     }
 
     return (

@@ -8,7 +8,6 @@ export const FETCH_PLANTS_START = 'FETCH_PLANTS_START'
 export const FETCH_PLANTS_SUCCESS = 'FETCH_PLANTS_SUCCESS'
 export const FETCH_PLANTS_FAILURE = 'FETCH_PLANTS_FAILURE'
 
-
 //...add a new plant into our object
 export const addPlant = (nickname, species, water, description) => {
 
@@ -35,10 +34,11 @@ export const fetchPlants = () => (dispatch) => {
     //fetch the api here
     axios.get(`https://water-my-plants-build.herokuapp.com/plants`)
         .then(res => {
-            dispatch({ type: FETCH_PLANTS_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_PLANTS_SUCCESS, payload: res.data });
         })
         .catch(err => {
             console.log("error: ", err)
             dispatch({ type: FETCH_PLANTS_FAILURE, payload: err})
-        })
+    })
 }
+
