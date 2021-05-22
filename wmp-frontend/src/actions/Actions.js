@@ -37,6 +37,7 @@ export const fetchPlants = () => (dispatch) => {
     //fetch the api here
     axios.get(`https://water-my-plants-build.herokuapp.com/plants`)
         .then(res => {
+            console.log("getting plants")
             dispatch({ type: FETCH_PLANTS_SUCCESS, payload: res.data });
         })
         .catch(err => {
