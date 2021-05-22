@@ -17,11 +17,12 @@ function Signup (props) {
 
     const handleSubmit = e => {
         e.preventDefault();
-        // axios.post("https://water-my-plants-build.herokuapp.com/users/register", newUser)
-        //     .then(res => console.log(res))
-        //     .catch(err => console.log(err))
-        push("/home")
-
+        axios.post("https://water-my-plants-build.herokuapp.com/users/register", newUser)
+            .then(res => {
+                console.log(res);
+                push("/home");
+            }) 
+            .catch(err => console.log(err))
     }
 
     return (
