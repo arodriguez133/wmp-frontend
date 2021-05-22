@@ -13,15 +13,20 @@ const initialCredentialValue = {
   }
 
 function Login () {
-    
+    const [loginInfo, setLoginInfo] = useState({    username: '',    password: ''  });
     const history = useHistory();
     const [credentials, setCredentials] = useState(initialCredentialValue);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
 
     const handleChange = e => {
+        
         const userCredentials = {...credentials, [e.target.name] : e.target.value}
         setCredentials(userCredentials);
     }
+
+    const [error, setError] = useState('')
+  const {push} = useHistory()
+//   const handleChange = e => {    setLoginInfo({...loginInfo, [e.target.name]: e.target.value})  }
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -37,6 +42,7 @@ function Login () {
             })
             console.log(err)
         })
+        if (loginInfo.username === "" || loginInfo.password === '' ) {      setError('Username and Password field is required.')            }else if (loginInfo.username !== "Lambda" || loginInfo.password !== 'i<3Lambd4' ) {      setError('Incorrect Login.')    }
     }
 
     useEffect(() => {
